@@ -18,6 +18,10 @@ const images = [
 
 const galleryEl = document.querySelector('#gallery')
 
-images.forEach(element => {
-      galleryEl.insertAdjacentHTML('afterbegin', `<img src="${element.url}" alt="${element.alt}">`)
-  });
+const makeImageRowMurkup = image => {
+  const {url, alt} = image
+  return `<img src="${url}" alt="${alt}">`
+}
+
+const makeImageMurkup = images.map(makeImageRowMurkup).join('')
+galleryEl.insertAdjacentHTML('afterbegin', makeImageMurkup)
